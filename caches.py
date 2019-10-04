@@ -1,16 +1,15 @@
 #
 # https://www.geeksforgeeks.org/working-zip-files-python/
 #
-
 import os
 import zipfile
+from tkinter import filedialog
+from tkinter import *
 
-#Get project ID
-## id = input ("Enter project ID value: ")
-
-#Get Cache directory
-## path = input ("Enter path to cache directory: ")
-path = "C:\\Users\\dburns\\Desktop\\Desktop_04_2019\\Python\\testfodler"
+#GUI for directory selection
+root = Tk()
+root.filename =  filedialog.askdirectory(initialdir = "/",title = "Select Cache Directory")
+path = (root.filename)
 
 #zip the directory with the caches
 def zipdir(path, ziphandle):
