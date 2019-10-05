@@ -5,8 +5,9 @@
 # https://stackoverflow.com/questions/41578808/python-indexerror-tuple-index-out-of-range-when-using-py2exe
 # https://stackoverflow.com/questions/1406145/how-do-i-get-rid-of-python-tkinter-root-window
 # https://thispointer.com/python-how-to-move-files-and-directories/
+# https://stackoverflow.com/questions/1406145/how-do-i-get-rid-of-python-tkinter-root-window
 # 
-# 
+
 import os
 import zipfile
 from tkinter import filedialog
@@ -21,32 +22,37 @@ from pymsgbox import *
 root = Tk()
 root.withdraw() #hide the root window
 
-root.filename =  filedialog.askdirectory(initialdir = "/",title = "Please Select Cache Directory")
-path = (root.filename)
-
-i = 0
-#zip the directory with the caches
-def zipdir(path, ziphandle):
-    
-
-    for root, directories, files in os.walk(path):
-        for file in files:
-            ziphandle.write(os.path.join(root, file))
+#Processing GUI
+msg = Tk()
+msg.title("Compressing...")
+var = StringVar()
+label = Message( msg, textvariable = var, relief = RAISED )
+var.set("Hey!? How are you doing?")
+label.pack()
+msg.withdraw()
 
 if __name__ == '__main__':
-    while i==0:
-        #show message box
-        alert(text='Please Wait while the files are compressed...', title='Compressing', button='Cancel')
 
-        #zip process
-        zipf = zipfile.ZipFile('caches.zip', 'w', zipfile.ZIP_DEFLATED)
-        zipdir(path, zipf)
-        zipf.close()
+    root.filename =  filedialog.askdirectory(initialdir = "/",title = "Please Select Cache Directory")
+    path = (root.filename)
 
-        #kill message box
-        i = 1
-    print ("compression complete")
+    #show message box
+    msg.deiconify()
 
+    #zip the directory with the caches
+    def zipdir(path, ziphandle):
+    
+        for root, directories, files in os.walk(path):
+            for file in files:
+                ziphandle.write(os.path.join(root, file))
+
+#zip process
+zipf = zipfile.ZipFile('caches.zip', 'w', zipfile.ZIP_DEFLATED)
+zipdir(path, zipf)
+zipf.close()
+
+#kill message box
+msg.withdraw()
 
 #GUI to get output directory of zipfile
 root.filename =  filedialog.askdirectory(initialdir = "/",title = "Please Select Target location to Extract to")
