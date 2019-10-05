@@ -5,7 +5,7 @@
 # https://stackoverflow.com/questions/41578808/python-indexerror-tuple-index-out-of-range-when-using-py2exe
 # https://stackoverflow.com/questions/1406145/how-do-i-get-rid-of-python-tkinter-root-window
 # https://thispointer.com/python-how-to-move-files-and-directories/
-# https://stackoverflow.com/questions/1406145/how-do-i-get-rid-of-python-tkinter-root-window
+# https://stackoverflow.com/questions/42410194/closing-my-message-box-and-root-window-in-python-3-6
 # 
 
 import os
