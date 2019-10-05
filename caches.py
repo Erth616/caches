@@ -10,6 +10,7 @@
 
 import os
 import zipfile
+import tkinter as tk
 from tkinter import filedialog
 from tkinter import *
 import shutil
@@ -23,12 +24,10 @@ root = Tk()
 root.withdraw() #hide the root window
 
 #Processing GUI
-msg = Tk()
-msg.title("Compressing...")
-var = StringVar()
-label = Message( msg, textvariable = var, relief = RAISED )
-var.set("Hey!? How are you doing?")
-label.pack()
+msg = tk.Tk()
+msg.title("Compressing Files. Please Wait...")
+canvas= Canvas(msg, width=350, height=50)
+canvas.pack()
 msg.withdraw()
 
 if __name__ == '__main__':
